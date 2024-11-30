@@ -34,7 +34,7 @@ namespace Server.Custom
 		    case Layer.Waist:
 			if (item != null)
 			{
-				hasLoinCloth = hasLoinCloth || item is LoinCloth;
+				hasLoinCloth = hasLoinCloth || item is BarbarianLoinCloth;
 			}
 			break;
 

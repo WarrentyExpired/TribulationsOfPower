@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server;
 using Server.Engines.Craft;
 using Server.Network;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -393,6 +394,45 @@ namespace Server.Items
 
 			base.OnRemoved( parent );
 		}
+
+
+                protected void AddStatMods(Mobile mobile)
+                {
+                        var player = mobile as PlayerMobile;
+
+                        string modName = Serial.ToString();
+                        int strBonus = ComputeStatBonus( StatType.Str );
+                        int dexBonus = ComputeStatBonus( StatType.Dex );
+                        int intBonus = ComputeStatBonus( StatType.Int );
+                        if ( strBonus != 0 ) player.AddStatMod( new StatMod( StatType.Str, modName + "Str", strBonus, TimeSpan.Zero ) );
+                        if ( dexBonus != 0 ) player.AddStatMod( new StatMod( StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero ) );
+                        if ( intBonus != 0 ) player.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
+                }
+
+                protected void RemoveStatMods(Mobile mobile)
+                {
+                        var player = mobile as PlayerMobile;
+                        if (player == null) return;
+
+                        string modName = this.Serial.ToString();
+                        player.RemoveStatMod( modName + "Str" );
+                        player.RemoveStatMod( modName + "Dex" );
+                        player.RemoveStatMod( modName + "Int" );
+                }
+
+                public virtual void AddResists( BaseArmor item, int A, int B, int C, int D, int E)
+                {
+                        if (item == null || !(item is BaseArmor))
+                                return;
+
+                                item.PhysicalBonus = A;
+                                item.FireBonus = B;
+                                item.ColdBonus = C;
+                                item.PoisonBonus = D;
+                                item.EnergyBonus = E;
+
+                }
+
 
 		public virtual int OnHit( BaseWeapon weapon, int damageTaken )
 		{

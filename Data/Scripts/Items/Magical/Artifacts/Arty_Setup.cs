@@ -12,7 +12,13 @@ namespace Server.Misc
 			points = 200 - points;
 			if ( points < 50 ){ points = 50; }
 
-			if (item is BarbarianHelm)
+                        if (item is BarbarianLoinCloth)
+                        {
+                                ((BarbarianLoinCloth)item).m_Gifter = null;
+                                ((BarbarianLoinCloth)item).m_How = "Unearthed by";
+                                ((BarbarianLoinCloth)item).m_Points = 0;
+                        }
+			else if (item is BarbarianHelm)
 			{
 				((BarbarianHelm)item).m_Gifter = null;
 				((BarbarianHelm)item).m_How = "Unearthed by";
