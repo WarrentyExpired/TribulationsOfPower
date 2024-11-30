@@ -13,8 +13,17 @@ namespace Server.Items
 	public class BarbarianLoinCloth : BaseGiftWaist, ISpecializationObserver, IDisableableItem
 	{
 		public int Stains;
-		private PlayerMobile _boundTo;
+		public PlayerMobile _boundTo;
 		
+		[CommandProperty( AccessLevel.GameMaster )]
+		public PlayerMobile Owner { get{ return _boundTo; } set{ _boundTo = value; } }
+
+		[CommandProperty(AccessLevel.Owner)]
+		public int Blood_Stains { get { return Stains; } set { Stains = value; InvalidateProperties(); } }
+
+
+		
+
 		public bool IsDisabled
 		{
 			get
@@ -76,13 +85,16 @@ namespace Server.Items
 				base.AddNameProperty(list);
 				list.Add(1049644, "Required Guild: Warrior");
 				list.Add(1049644, "Required Class: Barbarian Activated");
-				if (_boundTo == null) list.Add(1070722, "Will this Loincloth fit you?");
+                                if (_boundTo == null) list.Add(1070722, "Will this Loincloth fit you?");
+				//else if (_boundTo != null) list.Add(1070722, "This Loincloth only fits " + _boundTo.Name);
 			}
 			else
 			{
 				base.GetProperties(list);
 			}
-			if (_boundTo != null) list.Add(1070722, "The Loincloth only fits " + _boundTo.Name);
+                        string sPower = string.Format("{0:n0}", Stains);
+                        if (_boundTo != null) list.Add( 1070722, "Blood for " + _boundTo.Name + ": " + sPower + "");				
+			if (_boundTo != null) list.Add(1070722, "This Loincloth only fits " + _boundTo.Name);
 		}
 		
                 public void SpecializationUpdated(PlayerMobile player, SpecializationType specialization)
@@ -97,6 +109,7 @@ namespace Server.Items
 			base.Serialize(writer);
 			writer.Write( (int) 1 );
 			writer.WriteMobile(_boundTo);
+			writer.Write( Stains );
 		}
 		
 		public override void Deserialize(GenericReader reader)
@@ -104,6 +117,7 @@ namespace Server.Items
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
 			_boundTo = reader.ReadMobile() as PlayerMobile;
+			Stains = reader.ReadInt();
 		}
 	}
 }

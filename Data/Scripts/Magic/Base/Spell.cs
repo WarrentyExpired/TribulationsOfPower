@@ -808,6 +808,11 @@ namespace Server.Spells
 			return 0;
 		}
 
+		public virtual int ComputeFameAward()
+		{
+			return 0;
+		}
+
 		public virtual bool CheckSequence()
 		{
 			int mana = ScaleMana( GetMana() );
@@ -864,6 +869,11 @@ namespace Server.Spells
 
 				if ( karma != 0 )
 					Misc.Titles.AwardKarma( Caster, karma, true );
+
+				int fame = ComputeFameAward();
+				
+				if ( fame != 0 )
+					Misc.Titles.AwardFame( Caster, fame, true );
 
 				if( TransformationSpellHelper.UnderTransformation( m_Caster, typeof( VampiricEmbraceSpell ) ) )
 				{

@@ -8025,8 +8025,38 @@ namespace Server.Mobiles
 
 			///////////////////////////////////////////////////////////////////////////////////////
 
+                        SlayerEntry spreadsmash = SlayerGroup.GetEntryByName( SlayerName.Repond );
 
-			///// Saved for Barbarian
+                        Mobile barbarian = this.LastKiller;                                                                           // DEATH KNIGHT HOLDING SOUL LANTERNS
+                        if ( spreadsmash.Slays(this) && barbarian != null && this.TotalGold > 0 )     // TURNS THE MONEY TO SOUL COUNT
+                        {
+                                if ( barbarian is BaseCreature )
+                                        barbarian = ((BaseCreature)barbarian).GetMaster();
+
+                                if ( barbarian is PlayerMobile )
+                                {
+                                        Item loincloth = barbarian.FindItemOnLayer( Layer.Waist );
+
+                                        if ( loincloth is BarbarianLoinCloth )
+                                        {
+                                                BarbarianLoinCloth stains = (BarbarianLoinCloth)loincloth;
+                                                stains.Stains = stains.Stains + this.TotalGold;
+                                                if ( stains.Stains > 100000 ){ stains.Stains = 100000; }
+                                                stains.InvalidateProperties();
+
+                                                Item barbpack = this.FindItemOnLayer( Layer.Backpack );
+                                                if ( barbpack != null )
+                                                {
+                                                        Item dtcoins = this.Backpack.FindItemByType( typeof( Gold ) );
+                                                        dtcoins.Delete();
+                                                        barbarian.SendMessage( "A blood stain has been claimed." );
+                                                        Effects.SendLocationParticles( EffectItem.Create( barbarian.Location, barbarian.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
+                                                        Effects.PlaySound( barbarian.Location, barbarian.Map, 0x1ED );
+                                                }
+                                        }
+                                }
+                        }
+
 
                         ///////////////////////////////////////////////////////////////////////////////////////
 
