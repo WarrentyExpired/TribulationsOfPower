@@ -54,11 +54,21 @@ namespace Server.Items
 		
 		public override bool CanEquip(Mobile from)
 		{
-			var canEquip = base.CanEquip(from);
-			if (!canEquip) return false;
-			if (_boundTo == null || _boundTo == from) return true;
-			from.SendAsciiMessage("These helm did not accept you.");
-			return false;
+                        var canEquip = base.CanEquip(from);
+                        if (!canEquip) return false;
+			if ((int)from.Skills[SkillName.Tactics].Base > 90)
+			{
+				return true;
+			}
+			else
+			{
+				from.SendAsciiMessage("You need 90 or more in the Tactics Skill");
+				return false;
+			}
+                        if (_boundTo == null || _boundTo == from) return true;
+                        from.SendAsciiMessage("These helm did not accept you.");
+                        return false;
+
 		}
 
 		public override bool OnEquip(Mobile from)
@@ -70,7 +80,7 @@ namespace Server.Items
 			if (_boundTo == null)
 			{
 				_boundTo = player;
-                int t_Points = 0;
+		                int t_Points = 0;
 				int a_Points = 0;
 				t_Points = 2 * (int)(player.Skills[SkillName.Tactics].Base);
 				a_Points = (int)(player.Skills[SkillName.Anatomy].Base) / 2;
@@ -93,10 +103,9 @@ namespace Server.Items
 			if (IsDisabled)
 			{
 				base.AddNameProperty(list);
-				list.Add(1049644, "Required Class: Barbarian");
 				list.Add(1049644, "Required Guild: Warrior");
-				if (_boundTo == null) list.Add(1070722, "Will Cromm accepts you.");
-				else if (m_Points > 5) list.Add(1070722, "Single Click to Enchant");
+				list.Add(1049644, "Required Class: Barbarian Activated");
+				if (_boundTo == null) list.Add(1070722, "Will Cromm accepts your lust for blood?.");
 			}
 			else
 			{
