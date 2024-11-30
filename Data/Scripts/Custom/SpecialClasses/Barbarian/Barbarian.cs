@@ -100,7 +100,8 @@ namespace Server.Custom
 
         public override bool ValidateStats(PlayerMobile player)
         {
-            if (player.Dex < 50) return false;
+            if (player.Dex < 100) return false;
+	    if (player.Str < 100) return false;
 
             return true;
         }
