@@ -25,7 +25,7 @@ namespace Server.Spells.Barbarian
 		public override void OnCast()
 		{
 			BaseWeapon weapon = Caster.Weapon as BaseWeapon;
-			if ( weapon == null || weapon is Fists )
+			if ( weapon == null || weapon is Fists || weapon is BaseRanged)
 			{
 				Caster.SendAsciiMessage( "You must have a 2 handed weapon equipped." );
 			}
