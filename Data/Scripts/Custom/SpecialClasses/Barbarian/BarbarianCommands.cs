@@ -15,7 +15,7 @@ namespace Server.Scripts.Commands
 		public static void Initialize()
 		{
 			Properties.Initialize();
-				Register( "BBloodLust", AccessLevel.Player, new CommandEventHandler( BBloodLust_OnCommand ) );
+				Register( "BBloodThirst", AccessLevel.Player, new CommandEventHandler( BBloodThirst_OnCommand ) );
 		}
 
 		public static void Register( string command, AccessLevel access, CommandEventHandler handler )
@@ -23,13 +23,13 @@ namespace Server.Scripts.Commands
 			CommandSystem.Register(command, access, handler);
 		}
 
-                [Usage( "BBloodLust" )]
+                [Usage( "BBloodThirst" )]
                 [Description( "Activates Blood Lust" )]
-                public static void BBloodLust_OnCommand( CommandEventArgs e )
+                public static void BBloodThirst_OnCommand( CommandEventArgs e )
                 {
                 	Mobile from = e.Mobile;
                 	if ( !Multis.DesignContext.Check( e.Mobile ) ){ return; }
-               		 new BloodLustSpell( e.Mobile, null ).Cast();
+               		 new BloodThirstSpell( e.Mobile, null ).Cast();
                 }
 	}
 }

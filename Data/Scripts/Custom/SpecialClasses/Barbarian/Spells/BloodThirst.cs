@@ -7,7 +7,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Barbarian
 {
-	public class BloodLustSpell : BarbarianSpell
+	public class BloodThirstSpell : BarbarianSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo("Blood Lust", "Blóðþrá", 203, 9031);
 	
@@ -18,7 +18,7 @@ namespace Server.Spells.Barbarian
                 public override bool BlocksMovement{ get{ return false; } }
 		private PlayerMobile barbarian;
 
-		public BloodLustSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public BloodThirstSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}
 
@@ -27,10 +27,12 @@ namespace Server.Spells.Barbarian
 			BaseWeapon weapon = Caster.Weapon as BaseWeapon;
 			if ( weapon == null || weapon is Fists )
 			{
-				Caster.SendLocalizedMessage( 501078 );
+				Caster.SendAsciiMessage( "You must have a 2 handed weapon equipped." );
 			}
 			else if ( CheckSequence() )
 			{
+				Caster.SendMessage( "Your enemies wounds will healing you.");
+				DrainStainOnCloth( Caster, RequiredTithing );
       	                	Caster.PlaySound( 0x387 );
       	                        Caster.FixedParticles( 0x3779, 1, 15, 9905, 32, 2, EffectLayer.Head );
                                 Caster.FixedParticles( 0x37B9, 1, 14, 9502, 32, 5, (EffectLayer)255 );
