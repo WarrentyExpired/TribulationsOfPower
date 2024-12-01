@@ -66,7 +66,7 @@ namespace Server.Items
 				return false;
 			}
                         if (_boundTo == null || _boundTo == from) return true;
-                        from.SendAsciiMessage("These helm did not accept you.");
+                        from.SendAsciiMessage("The helm did not accept you.");
                         return false;
 
 		}
