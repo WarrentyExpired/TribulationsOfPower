@@ -21,7 +21,7 @@ namespace Server.Custom
 			if (item != null) return false;
 			break;
                     case Layer.TwoHanded:
-                        if (item != null && (item is BaseShield || item is Fists || item is PugilistGloves || item is ThrowingGloves))
+                        if (item != null && (item is BaseShield || item is Fists || item is PugilistGloves || item is ThrowingGloves || item is BaseRanged))
 			{
 				hasValidWeapon = false;
 			}
