@@ -40,7 +40,7 @@ namespace Server.Spells.Undead
 			{
 				Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
 			}
-			else if ( reg.IsPartOf( typeof( PirateRegion ) ) )
+			else if ( reg.IsPartOf( typeof( PirateRegion ) ) && MySettings.S_TravelRestrictions )
 			{
 				Caster.SendMessage( "These waters are too rough to cast this spell." );
 			}

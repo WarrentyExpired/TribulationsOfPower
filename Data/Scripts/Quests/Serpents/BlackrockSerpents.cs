@@ -191,6 +191,55 @@ namespace Server.Items
 			base.Serialize(writer);
 			writer.Write((int) 0);
 		}
+////Secrets Of Sosaria Commit #151 Start
+		public override void Deserialize(GenericReader reader)
+		{
+			base.Deserialize(reader);
+			int version = reader.ReadInt();
+		}
+	}
+	public class BlackrockSerpentOrderDecoration : Item
+	{
+		[Constructable]
+		public BlackrockSerpentOrderDecoration() : base( 0x25C0 )
+		{
+			Name = "Inert Blackrock Serpent";
+			Weight = 1.0;
+			Hue = 0x96C;
+		}
+        public BlackrockSerpentOrderDecoration(Serial serial) : base(serial)
+		{
+		}
+		public override void Serialize(GenericWriter writer)
+		{
+			base.Serialize(writer);
+			writer.Write((int) 0);
+		}
+		public override void Deserialize(GenericReader reader)
+		{
+			base.Deserialize(reader);
+			int version = reader.ReadInt();
+		}
+	}
+	public class BlackrockSerpentChaosDecoration : Item
+	{
+		[Constructable]
+		public BlackrockSerpentChaosDecoration() : base( 0x25C0 )
+		{
+			Name = "Inert Blackrock Serpent";
+			Weight = 1.0;
+			Hue = 0x96C;
+		}
+       	public BlackrockSerpentChaosDecoration(Serial serial) : base(serial)
+		{
+		}
+
+/////////// Commit #151 End
+		public override void Serialize(GenericWriter writer)
+		{
+			base.Serialize(writer);
+			writer.Write((int) 0);
+		}
 
 		public override void Deserialize(GenericReader reader)
 		{

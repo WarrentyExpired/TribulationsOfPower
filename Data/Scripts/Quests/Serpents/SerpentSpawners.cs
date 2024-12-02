@@ -31,7 +31,12 @@ namespace Server.Items
 				BaseCreature monster = new SerpentOfOrder();
 				monster.MoveToWorld( this.Location, this.Map );
 				monster.PlaySound( 0x217 );
-				this.Delete();
+				/// Deleted for Commit #151 ///this.Delete();
+				/// Added for Commit #151 Start
+				from.SendMessage( "The Serpent of Order comes forth to challenge you!" );
+				snake.Delete();
+				from.AddToBackpack( new BlackrockSerpentOrderDecoration() );
+				/// Commit #151 End
 			}
 			else
 			{
@@ -74,7 +79,12 @@ namespace Server.Items
 				BaseCreature monster = new SerpentOfChaos();
 				monster.MoveToWorld( this.Location, this.Map );
 				monster.PlaySound( 0x217 );
-				this.Delete();
+				///Deleted for commit #151 ///this.Delete();
+				///Start Commit #151
+				from.SendMessage( "The Serpent of Chaos comes forth to challenge you!" );
+				snake.Delete();
+				from.AddToBackpack( new BlackrockSerpentOrderDecoration() );
+				///Eend Commit #151 
 			}
 			else
 			{

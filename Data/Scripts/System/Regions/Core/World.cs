@@ -527,13 +527,13 @@ namespace Server.Misc
 				return false;
 
 			if ( land == Land.Ambrosia )
-				return false;
+				return ! MySettings.S_TravelRestrictions;
 
 			if ( land == Land.SkaraBrae )
 				return false;
 
 			if ( reg.IsPartOf( "the Moon's Core" ) || reg.IsPartOf( "the Core of the Moon" ) || reg.IsPartOf( "Moonlight Cavern" ) )
-				return false;
+				return ! MySettings.S_TravelRestrictions;
 
 			if ( reg.IsPartOf( "the Camping Tent" ) )
 				return false;
