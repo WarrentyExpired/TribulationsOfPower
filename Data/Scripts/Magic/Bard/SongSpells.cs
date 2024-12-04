@@ -69,19 +69,31 @@ namespace Server.Spells.Song
 			return (int)(m.Skills[SkillName.Musicianship].Value + m.Skills[SkillName.Provocation].Value + m.Skills[SkillName.Discordance].Value + m.Skills[SkillName.Peacemaking].Value );
 		}
 
-		public override void OnCast()
-        {
-            Spellbook book = Spellbook.Find(Caster, -1, SpellbookType.Song);
+		public override bool CheckCast()
+		{	
+			if ( !base.CheckCast() )
+				return false;
+			if ( Caster.Skills[CastSkill].Value < RequiredSkill )
+			{
+				string args = String.Format( "{0}\t{1}\t ", RequiredSkill.ToString( "F1" ), CastSkill.ToString() );
+				Caster.SendLocalizedMessage( 1063013, args ); // You need at least ~1_SKILL_REQUIREMENT~ ~2_SKILL_NAME~ skill to use that ability.
+				return false;
+			}
+            		Spellbook book = Spellbook.Find(Caster, -1, SpellbookType.Song);
 
 			if ( book is SongBook )
 				m_Book = (SongBook)book;
 
-            if ( m_Book == null )
-            {
-                Caster.SendMessage("You seem to be missing your book of songs.");
-                return;
-            }
+			if ( m_Book == null )
+            		{
+                		Caster.SendMessage("You seem to be missing your book of songs.");
+                		return false;
+            		}
+			return true;
+		}
 
+		public override void OnCast()
+		{
 		}
 
 		public override void DoFizzle()
