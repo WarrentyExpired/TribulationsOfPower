@@ -15,13 +15,13 @@ namespace Server.Misc
                         if (item is BarbarianLoinCloth)
                         {
                                 ((BarbarianLoinCloth)item).m_Gifter = null;
-                                ((BarbarianLoinCloth)item).m_How = "Unearthed by";
+                                //((BarbarianLoinCloth)item).m_How = "Taken by";
                                 ((BarbarianLoinCloth)item).m_Points = 0;
                         }
 			else if (item is BarbarianHelm)
 			{
 				((BarbarianHelm)item).m_Gifter = null;
-				((BarbarianHelm)item).m_How = "Unearthed by";
+				//((BarbarianHelm)item).m_How = "Unearthed by";
 				((BarbarianHelm)item).m_Points = 0;
 			}
 			else if ( item is BaseGiftArmor )

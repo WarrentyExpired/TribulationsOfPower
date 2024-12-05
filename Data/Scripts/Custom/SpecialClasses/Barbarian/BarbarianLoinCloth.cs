@@ -48,14 +48,34 @@ namespace Server.Items
 		{
 			var canEquip = base.CanEquip(from);
 			if (!canEquip) return false;
-			if ((int)from.Skills[SkillName.Tactics].Base > 90)
+			if ((int)from.Skills[SkillName.Tactics].Base < 90)
 			{
-				return true;
+				from.SendAsciiMessage(" You need 90 or more Tactics to Activate The Barbarian.");
+				return false;
+			}
+			else if ((int)from.Skills[SkillName.Anatomy].Base < 90)
+			{
+				from.SendAsciiMessage(" You need 90 or more Anatomy to Activate The Barbarian.");
+				return false;
+			}
+			else if ((int)from.Skills[SkillName.Focus].Base < 50)
+			{
+				from.SendAsciiMessage(" You need 50 or more Focus to Activate The Barbarian.");
+				return false;
+			}
+			else if (from.RawStr < 100)
+			{
+				from.SendAsciiMessage(" You need 100 or more Strenght to Activate The Barbarian.");
+				return false;
+			} 
+			else if (from.RawDex < 100)
+			{
+				from.SendAsciiMessage(" You need 100 or more Dex to Activate The Barbarian.");
+				return false;
 			}
 			else
 			{
-				from.SendAsciiMessage("You need 90 or more in Tactics Skill");
-				return false;
+				return true;
 			}
 			if (_boundTo == null || _boundTo == from) return true;
 			from.SendAsciiMessage("This is not your loincloth!");
@@ -71,7 +91,7 @@ namespace Server.Items
 			if (_boundTo == null)
 			{
 				_boundTo = player;
-				m_Points = (int)(player.Skills[SkillName.Tactics].Base + player.Skills[SkillName.Anatomy].Base) / 2;
+				m_Points = 100; //(int)(player.Skills[SkillName.Tactics].Base + player.Skills[SkillName.Anatomy].Base) * 0.75;
 				InvalidateProperties();
 				player.SendAsciiMessage("The Loincloth is now yours.");
 			}
@@ -84,9 +104,8 @@ namespace Server.Items
 			{
 				base.AddNameProperty(list);
 				list.Add(1049644, "Required Guild: Warrior");
-				list.Add(1049644, "Required Class: Barbarian Activated");
+				list.Add(1049644, "Requirements to Activate Barbarian Class");
                                 if (_boundTo == null) list.Add(1070722, "Will this Loincloth fit you?");
-				//else if (_boundTo != null) list.Add(1070722, "This Loincloth only fits " + _boundTo.Name);
 			}
 			else
 			{
