@@ -12,22 +12,33 @@ namespace Server.Custom
         public override bool ValidateEquipment(PlayerMobile player)
         {
 	    var hasValidWeapon = false;
+	    var hasOneHandedWeapon = false;
 	    var hasLoinCloth = false;
             foreach (var item in player.Items)
             {
                 switch (item.Layer)
                 {
                     case Layer.OneHanded:
-			if (item != null) return false;
+			if (item != null && (item is BaseWeapon))
+			{
+				hasValidWeapon = true;
+			}
 			break;
                     case Layer.TwoHanded:
-                        if (item != null && (item is BaseShield || item is Fists || item is PugilistGloves || item is ThrowingGloves || item is BaseRanged))
+                        if (item != null && (item is Fists || item is PugilistGloves || item is ThrowingGloves || item is BaseRanged || item is BaseTrinket || item is BaseGiftJewel || item is BaseLight))
 			{
 				hasValidWeapon = false;
 			}
 			else
 			{
-				hasValidWeapon = true;
+				if (hasOneHandedWeapon = true)
+				{
+					hasValidWeapon = true;
+				}
+				else
+				{
+					hasValidWeapon = false;
+				}
 			}
                         break;
 
