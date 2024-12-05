@@ -523,6 +523,11 @@ namespace Server.Spells
 		{
 			m_StartCastTime = DateTime.Now;
 
+			if (m_Caster is PlayerMobile && ((PlayerMobile)m_Caster).Barbarian() )
+			{
+				m_Caster.SendMessage( "Barbarians prefer the closeness of a Weapon." );
+			}
+
 			if ( Core.AOS && m_Caster.Spell is Spell && ((Spell)m_Caster.Spell).State == SpellState.Sequencing )
 				((Spell)m_Caster.Spell).Disturb( DisturbType.NewCast );
 
