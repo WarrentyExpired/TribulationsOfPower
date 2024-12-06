@@ -110,7 +110,7 @@ namespace Server.Spells.Barbarian
 
 	        public override int GetMana()
         	{
-        		return ScaleMana( RequiredMana );
+        		return ScaleMana( 0 );
         	}
 
 		public static int GetStainsOnCloth( Mobile Caster, BarbarianSpell spell )
@@ -169,6 +169,7 @@ namespace Server.Spells.Barbarian
 
 		public static void DrainStainOnCloth( Mobile from, int stains )
 		{
+			from.Stam = ( from.Stam - (stains / 2));
 			if ( AosAttributes.GetValue( from, AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
 				stains = 0;
 			if ( stains > 0 )
