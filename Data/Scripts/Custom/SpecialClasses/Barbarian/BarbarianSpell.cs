@@ -11,7 +11,7 @@ namespace Server.Spells.Barbarian
 {
 	public abstract class BarbarianSpell : Spell
 	{
-		public abstract int RequiredTithing { get; }
+		public abstract int RequiredStains { get; }
 		public abstract double RequiredSkill { get; }
 		public abstract int RequiredMana { get; }
 		public override bool ClearHandsOnCast { get { return false; } }
@@ -43,9 +43,9 @@ namespace Server.Spells.Barbarian
 				Caster.SendMessage("You must have at least " + RequiredSkill + " Tactics to use this ability.");
 				return false;
 			}
-			else if ( GetStainsOnCloth( Caster ) < RequiredTithing )
+			else if ( GetStainsOnCloth( Caster ) < RequiredStains )
 			{
-				Caster.SendMessage("You must have at least " + RequiredTithing + " Stains to uses this ability.");
+				Caster.SendMessage("You must have at least " + RequiredStains + " Stains to uses this ability.");
 				return false;
 			}
 			else if ( Caster.Mana < GetMana() )
@@ -58,7 +58,7 @@ namespace Server.Spells.Barbarian
 
 		public override bool CheckFizzle()
 		{
-			int requiredTithing = GetTithing( Caster, this );
+			int requiredStains = GetStainsOnCloth( Caster, this );
 			int mana = GetMana();
 		
 			if ( Caster.Stam < (int)( 10 * MySettings.S_PlayerLevelMod ) )
@@ -76,9 +76,9 @@ namespace Server.Spells.Barbarian
                                 	Caster.SendMessage( "You must have at least " + RequiredSkill + " Tactics to use this ability." );
                                 	return false;
                         	}
-                        	else if ( GetStainsOnCloth( Caster ) < requiredTithing )
+                        	else if ( GetStainsOnCloth( Caster ) < requiredStains )
                         	{
-                                	Caster.SendMessage( "You must have at least " + requiredTithing + " Stains to use this ability." );
+                                	Caster.SendMessage( "You must have at least " + requiredStains + " Stains to use this ability." );
                         	        return false;
                         	}
                         	else if ( Caster.Mana < mana )
@@ -113,12 +113,12 @@ namespace Server.Spells.Barbarian
         		return ScaleMana( RequiredMana );
         	}
 
-		public static int GetTithing( Mobile Caster, BarbarianSpell spell )
+		public static int GetStainsOnCloth( Mobile Caster, BarbarianSpell spell )
         	{
         		if ( AosAttributes.GetValue( Caster, AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
                 	return 0;
 
-        	        return spell.RequiredTithing;
+        	        return spell.RequiredStains;
         	}
 
        	 	public override void SayMantra()
@@ -167,11 +167,11 @@ namespace Server.Spells.Barbarian
                         return v / div;
                 }
 
-		public static void DrainStainOnCloth( Mobile from, int tithing )
+		public static void DrainStainOnCloth( Mobile from, int stains )
 		{
 			if ( AosAttributes.GetValue( from, AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
-				tithing = 0;
-			if ( tithing > 0 )
+				stains = 0;
+			if ( stains > 0 )
 			{
 				ArrayList targets = new ArrayList();
 				foreach ( Item item in World.Items.Values )
@@ -181,7 +181,7 @@ namespace Server.Spells.Barbarian
 						BarbarianLoinCloth loincloth = (BarbarianLoinCloth)item;
 						if ( loincloth._boundTo == from )
 						{
-							loincloth.Stains = loincloth.Stains - tithing;
+							loincloth.Stains = loincloth.Stains - stains;
 							if ( loincloth.Stains < 1 ){ loincloth.Stains = 0; }
 							loincloth.InvalidateProperties();
 						}

@@ -14,7 +14,7 @@ namespace Server.Spells.Barbarian
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 0.75 ); } }
 		public override double RequiredSkill{ get{ return 20.0; } }
 		public override int RequiredMana{ get{ return 7; } }
-		public override int RequiredTithing{ get{ return 49; } }	
+		public override int RequiredStains{ get{ return 49; } }	
                 public override bool BlocksMovement{ get{ return false; } }
 		private PlayerMobile barbarian;
 
@@ -32,7 +32,7 @@ namespace Server.Spells.Barbarian
 			else if ( CheckSequence() )
 			{
 				Caster.SendMessage( "Your enemies wounds will healing you.");
-				DrainStainOnCloth( Caster, RequiredTithing );
+				DrainStainOnCloth( Caster, RequiredStains );
       	                	Caster.PlaySound( 0x387 );
       	                        Caster.FixedParticles( 0x3779, 1, 15, 9905, 32, 2, EffectLayer.Head );
                                 Caster.FixedParticles( 0x37B9, 1, 14, 9502, 32, 5, (EffectLayer)255 );
