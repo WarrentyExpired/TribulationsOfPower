@@ -22,6 +22,7 @@ using Server.Spells.Shinobi;
 using Server.Spells.Elementalism;
 using Server.Spells.DeathKnight;
 using Server.Spells.Chivalry;
+using Server.Spells.Barbarian;
 
 namespace Server.Spells
 {
@@ -523,11 +524,6 @@ namespace Server.Spells
 		{
 			m_StartCastTime = DateTime.Now;
 
-			if (m_Caster is PlayerMobile && ((PlayerMobile)m_Caster).Barbarian() )
-			{
-				m_Caster.SendMessage( "Barbarians prefer the closeness of a Weapon." );
-			}
-
 			if ( Core.AOS && m_Caster.Spell is Spell && ((Spell)m_Caster.Spell).State == SpellState.Sequencing )
 				((Spell)m_Caster.Spell).Disturb( DisturbType.NewCast );
 
@@ -635,6 +631,7 @@ namespace Server.Spells
 
 		public static bool CanCastSpell( Mobile m, ISpell s )
 		{
+
 			if ( m is PlayerMobile )
 			{
 				if ( m.Land == Land.Underworld && ( s is MagerySpell || s is ResearchSpell || s is ElementalSpell ) && Utility.RandomMinMax(1,3) != 1 )

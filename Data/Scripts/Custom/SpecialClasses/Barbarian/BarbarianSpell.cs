@@ -101,12 +101,12 @@ namespace Server.Spells.Barbarian
                 	Caster.NextSpellTime = DateTime.Now;
         	}
 
-		public override int ComputeFameAward()
-		{
-			int circle = (int)(RequiredSkill / 10);
-                	if ( circle < 1 ){ circle = 1; }
-	                return ( 40 + ( 10 * circle ) );
-		}
+		//public override int ComputeFameAward()
+		//{
+		//	int circle = (int)(RequiredSkill / 10);
+                //	if ( circle < 1 ){ circle = 1; }
+	        //        return ( 40 + ( 10 * circle ) );
+		//}
 
 	        public override int GetMana()
         	{

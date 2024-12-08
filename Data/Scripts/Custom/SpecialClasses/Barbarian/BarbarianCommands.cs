@@ -16,6 +16,8 @@ namespace Server.Scripts.Commands
 		{
 			Properties.Initialize();
 				Register( "BBloodThirst", AccessLevel.Player, new CommandEventHandler( BBloodThirst_OnCommand ) );
+				Register( "BRage", AccessLevel.Player, new CommandEventHandler( BRage_OnCommand ) );
+				Register( "BBloodRenewal", AccessLevel.Player, new CommandEventHandler( BBloodRenewal_OnCommand ) );
 		}
 
 		public static void Register( string command, AccessLevel access, CommandEventHandler handler )
@@ -31,6 +33,30 @@ namespace Server.Scripts.Commands
                 	if ( !Multis.DesignContext.Check( e.Mobile ) ){ return; }
                		 new BloodThirstSpell( e.Mobile, null ).Cast();
                 }
+
+
+                [Usage( "BRage" )]
+                [Description( "Activates the Rage Ability" )]
+                public static void BRage_OnCommand( CommandEventArgs e )
+                {
+                        Mobile from = e.Mobile;
+                        if ( !Multis.DesignContext.Check( e.Mobile ) ){ return; }
+                         new RageSpell( e.Mobile, null ).Cast();
+                }
+
+
+                [Usage( "BBloodRenewal" )]
+                [Description( "Uses your collected bloodstains to resurrect a fallen soul." )]
+                public static void BBloodRenewal_OnCommand( CommandEventArgs e )
+                {
+                        Mobile from = e.Mobile;
+                        if ( !Multis.DesignContext.Check( e.Mobile ) ){ return; }
+                         new BloodRenewalSpell( e.Mobile, null ).Cast();
+                }
+
+
+
+
 	}
 }
 
