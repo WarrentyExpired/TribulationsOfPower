@@ -775,6 +775,9 @@ namespace Server.Accounting
 {
 	public class Account : IAccount, IComparable, IComparable<Account>
 	{
+		private int m_Gold;
+		[CommandProperty(AccessLevel.Owner)]
+		public int Gold { get { return m_Gold; } set { m_Gold = value; }}
 		public static readonly TimeSpan YoungDuration = TimeSpan.FromHours( 40.0 );
 
 		public static readonly TimeSpan InactiveDuration = TimeSpan.FromDays( 180.0 );
