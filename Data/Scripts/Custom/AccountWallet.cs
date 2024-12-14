@@ -28,10 +28,8 @@ namespace Server.Scripts.Commands
 		public static void WalletBalance_OnCommand( CommandEventArgs e )
 		{
 			Mobile from = e.Mobile;
-			//if ( !Multis.DesignContext.Check( e.Mobile ) ){ return; }
-
 			var player = from as PlayerMobile;
-			player.SendMessage(" Your Account Wallet balance is: " + player.AccountGold);
+			player.SendMessage("Your Account Wallet balance is: " + player.AccountGold);
 		}
 
 		[Usage( "WalletWithdraw" )]
@@ -39,8 +37,6 @@ namespace Server.Scripts.Commands
 		public static void WalletWithdraw_OnCommand( CommandEventArgs e )
 		{
 			Mobile from = e.Mobile;
-			//if ( !Multis.DesignContext.Check( e.Mobile ) ){ return; }
-
 			if (e.Arguments.Length != 1)
 			{
 				e.Mobile.SendMessage("[WalletWithdraw amount ");
@@ -51,7 +47,7 @@ namespace Server.Scripts.Commands
 			var amount = e.GetInt32(0);
 			if ( balance < amount)
 			{	
-				player.SendMessage("You do not have '{0}' gold to withdraw.");
+				player.SendMessage("You do not have" + amount + " gold to withdraw.");
 			}
 			else
 			{
