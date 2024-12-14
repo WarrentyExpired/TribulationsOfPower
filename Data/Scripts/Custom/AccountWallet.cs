@@ -47,7 +47,7 @@ namespace Server.Scripts.Commands
 			var amount = e.GetInt32(0);
 			if ( balance < amount)
 			{	
-				player.SendMessage("You do not have" + amount + " gold to withdraw.");
+				player.SendMessage("You do not have " + amount + " gold to withdraw.");
 			}
 			else
 			{
