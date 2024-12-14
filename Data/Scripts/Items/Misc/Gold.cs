@@ -58,7 +58,7 @@ namespace Server.Items
 			{		
 				player.AccountGold += this.Amount;
 				this.Delete();
-				player.SendMessage( "Gold had been move to your Account Gold");
+				player.SendMessage( this.Amount + " Gold had been move to your Account Gold");
 
 			}
 			else
