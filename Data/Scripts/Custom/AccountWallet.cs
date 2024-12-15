@@ -51,10 +51,20 @@ namespace Server.Scripts.Commands
 			}
 			else
 			{
-				player.AccountGold -= amount;
-				player.BankBox.DropItem( new BankCheck( amount ) );
-				player.SendMessage("You have withdrawn " + amount + " Gold from your Wallet.");
-				player.SendMessage("Your new balance is " + player.AccountGold);
+				if (amount > 60000)
+				{
+					player.AccountGold -= amount;
+					player.BankBox.DropItem( new BankCheck( amount ) );
+					player.SendMessage("A Bank Check for " + amount + " has been placed in your Bank Box");
+					player.SendMessage("Your new balance is " + player.AccountGold);
+				}
+				else
+				{
+					player.AccountGold -= amount;
+					player.BankBox.DropItem( new Gold( amount ) );
+					player.SendMessage("You have withdrawn " + amount + " Gold to your Bank Box");
+					player.SendMessage("Your new balance is " + player.AccountGold);
+				}
 			}
 			
 		}
