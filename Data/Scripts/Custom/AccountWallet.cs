@@ -49,6 +49,10 @@ namespace Server.Scripts.Commands
 			{	
 				player.SendMessage("You do not have " + amount + " gold to withdraw.");
 			}
+			else if (amount > 1000000)
+			{
+				player.SendMessage("You can only withdraw a maximum of 1,000,000 gold at a time.");
+			}
 			else
 			{
 				if (amount > 60000)
