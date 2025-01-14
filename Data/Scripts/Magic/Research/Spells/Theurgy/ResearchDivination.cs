@@ -71,16 +71,16 @@ namespace Server.Spells.Research
 					if ( Server.Items.PlayersHandbook.IsPeople( m ) )
 					{
 						BaseCreature c = (BaseCreature)m;
-						Caster.CloseGump( typeof( Server.SkillHandlers.DruidismGump ) );
-						Caster.SendGump( new Server.SkillHandlers.DruidismGump( Caster, c, 4 ) );
+						//Caster.CloseGump( typeof( Server.SkillHandlers.DruidismGump ) );
+						//Caster.SendGump( new Server.SkillHandlers.DruidismGump( Caster, c, 4 ) );
 						Caster.SendSound( 0x0F9 );
 						success = true;
 					}
 					else if ( m is BaseCreature )
 					{
 						BaseCreature c = (BaseCreature)m;
-						Caster.CloseGump( typeof( Server.SkillHandlers.DruidismGump ) );
-						Caster.SendGump( new Server.SkillHandlers.DruidismGump( Caster, c, 3 ) );
+						//Caster.CloseGump( typeof( Server.SkillHandlers.DruidismGump ) );
+						//Caster.SendGump( new Server.SkillHandlers.DruidismGump( Caster, c, 3 ) );
 						Caster.SendSound( 0x0F9 );
 						success = true;
 					}

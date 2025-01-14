@@ -93,8 +93,8 @@ namespace Server.Items
 					else if ( m is BaseCreature )
 					{
 						BaseCreature c = (BaseCreature)m;
-						from.CloseGump( typeof( Server.SkillHandlers.DruidismGump ) );
-						from.SendGump( new Server.SkillHandlers.DruidismGump( from, c, 2 ) );
+						//from.CloseGump( typeof( Server.SkillHandlers.DruidismGump ) );
+						//from.SendGump( new Server.SkillHandlers.DruidismGump( from, c, 2 ) );
 						from.SendSound( 0x55 );
 					}
 					else
