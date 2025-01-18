@@ -5297,6 +5297,17 @@ namespace Server.Mobiles
 				writer.Write( TimeSpan.Zero );
 			else
 				writer.Write( DeleteTimeLeft );
+
+	
+			// Version 19 Jako
+            if (Tamable)
+            {
+                writer.Write(m_level);
+                writer.Write(m_realLevel);
+                writer.Write(m_experience);
+                writer.Write(m_maxLevel);
+                writer.Write(m_traits);
+            }			
 		}
 
 		private static double[] m_StandardActiveSpeeds = new double[]
@@ -5541,6 +5552,16 @@ namespace Server.Mobiles
 				m_DeleteTimer = new DeleteTimer( this, deleteTime );
 				m_DeleteTimer.Start();
 			}
+
+				//jako deserialize
+			if (version >= 19 & Tamable)
+             {
+                 m_level = reader.ReadUInt();
+                 m_realLevel = reader.ReadUInt();
+                 m_experience = reader.ReadUInt();
+                 m_maxLevel = reader.ReadUInt();
+                 m_traits = reader.ReadUInt();
+             }		
 
 			if( version <= 14 && m_Paragon && Hue == 0x31 )
 			{
