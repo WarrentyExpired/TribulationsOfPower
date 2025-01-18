@@ -1609,7 +1609,7 @@ namespace Server.Mobiles
         private uint m_traits = 0;
         private DateTime m_nextMate = DateTime.Now;
         protected virtual TimeSpan NextMateDelay(uint atLevel) { return (atLevel == AbsMaxLevel ? TimeSpan.FromDays(14) : TimeSpan.FromDays(7)); }
-        public virtual uint ExpNeeded(uint atLevel) { return (uint)(5 * Math.Pow(atLevel, 3) + 10000); }
+        public virtual uint ExpNeeded(uint atLevel) { return (uint)(5 * Math.Pow(atLevel, 3)); }
         public virtual uint TraitsGiven(uint atLevel) { return (atLevel == 10) ? (uint)2 : (uint)1; }
         public string SexString { get { return (Female ? "Female" : "Male"); } }
         public JakoAttributes m_jakoAttributes = new JakoAttributes();
@@ -1863,6 +1863,21 @@ namespace Server.Mobiles
                 ControlMaster.SendMessage("Your pet is now level {0}.", newLevel);
             m_experience = 0;
             InvalidateProperties();
+
+			if (this.Level != null && ControlMaster != null)
+			{
+				if (this.ControlMaster is PlayerMobile)
+				{
+					int amount = Convert.ToInt32(this.Level) * Utility.RandomMinMax(1,4);
+					double difficulty = this.MinTameSkill * ((double)this.Loyalty/100);
+
+					while (amount > 0)
+					{
+						ControlMaster.CheckTargetSkill( SkillName.Taming, this, difficulty - 25.0, difficulty + 25.0 );
+						amount -= 1;
+					}
+				}
+			}
 
             return oldExp;
         }
