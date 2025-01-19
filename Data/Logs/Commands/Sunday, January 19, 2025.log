@@ -1,0 +1,51 @@
+##############################
+Log started on 1/19/2025 12:56:01 PM
+
+1/19/2025 12:58:48 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'buildworld '
+1/19/2025 12:59:53 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'M Tele'
+1/19/2025 1:00:26 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'delete '
+1/19/2025 1:00:28 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') deleting 0x4000519C (Bag)
+1/19/2025 1:00:36 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add bag'
+1/19/2025 1:00:38 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 983, 5) in Sosaria: "bag"
+1/19/2025 1:00:38 PM: 192.168.88.170: Serials: 0x4007A61F; 
+1/19/2025 1:00:48 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add hood'
+1/19/2025 1:00:55 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 983, 5) in Sosaria: "ClothHood"
+1/19/2025 1:00:55 PM: 192.168.88.170: Serials: 0x4007A894; 
+1/19/2025 1:01:04 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add robe'
+1/19/2025 1:01:06 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 985, 5) in Sosaria: "robe"
+1/19/2025 1:01:06 PM: 192.168.88.170: Serials: 0x4007A8DE; 
+1/19/2025 1:01:14 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add hermes'
+1/19/2025 1:01:17 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 984, 5) in Sosaria: "Artifact_BootsofHermes"
+1/19/2025 1:01:17 PM: 192.168.88.170: Serials: 0x4007A914; 
+1/19/2025 1:01:33 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add robe'
+1/19/2025 1:01:36 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add rob'
+1/19/2025 1:01:40 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 985, 5) in Sosaria: "ArchmageRobe"
+1/19/2025 1:01:40 PM: 192.168.88.170: Serials: 0x4007AB05; 
+1/19/2025 1:01:49 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add rob'
+1/19/2025 1:02:05 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2992, 984, 5) in Sosaria: "ChaosRobe"
+1/19/2025 1:02:05 PM: 192.168.88.170: Serials: 0x4007AE34; 
+1/19/2025 1:02:14 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 984, 5) in Sosaria: "DeathRobe"
+1/19/2025 1:02:14 PM: 192.168.88.170: Serials: 0x4007AF74; 
+1/19/2025 1:02:26 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 983, 5) in Sosaria: "FormalRobe"
+1/19/2025 1:02:26 PM: 192.168.88.170: Serials: 0x4007B0B8; 
+1/19/2025 1:02:53 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'delete '
+1/19/2025 1:02:55 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') deleting 0x4007A61F (Bag)
+1/19/2025 1:02:59 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add spellbook'
+1/19/2025 1:03:00 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 985, 5) in Sosaria: "spellbook"
+1/19/2025 1:03:00 PM: 192.168.88.170: Serials: 0x4007B2F3; 
+1/19/2025 1:03:08 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add necromancerspellbook'
+1/19/2025 1:03:11 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 985, 5) in Sosaria: "necromancerspellbook"
+1/19/2025 1:03:11 PM: 192.168.88.170: Serials: 0x4007B3E5; 
+1/19/2025 1:03:19 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'add elemetnalspellbook'
+1/19/2025 1:03:40 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 984, 5) in Sosaria: "ElementalSpellbook"
+1/19/2025 1:03:40 PM: 192.168.88.170: Serials: 0x4007B6B3; 
+1/19/2025 1:03:52 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') building at (2991, 985, 5) in Sosaria: "SongBook"
+1/19/2025 1:03:52 PM: 192.168.88.170: Serials: 0x4007B811; 
+1/19/2025 1:04:17 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'props '
+1/19/2025 1:04:24 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') set property 'Content' of 0x4007B2F3 (Spellbook) to '18446744073709551615'
+1/19/2025 1:04:34 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'props '
+1/19/2025 1:04:41 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') set property 'Content' of 0x4007B3E5 (NecromancerSpellbook) to '131071'
+1/19/2025 1:04:50 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'props '
+1/19/2025 1:04:59 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') set property 'Content' of 0x4007B6B3 (ElementalSpellbook) to '4294967295'
+1/19/2025 1:05:13 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') used command 'props '
+1/19/2025 1:05:19 PM: 192.168.88.170: Owner 0x105A "The Admin" ('Admin') set property 'Content' of 0x4007B811 (SongBook) to '65535'
