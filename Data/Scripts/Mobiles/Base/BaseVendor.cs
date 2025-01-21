@@ -1715,18 +1715,13 @@ namespace Server.Mobiles
 			}
 			if ( !bought && totalCost >= 1 )
 			{
-				cont = buyer.FindBankNoCreate();
-				if ( cont != null && cont.ConsumeTotal( typeof( Gold ), totalCost ) )
-				{
-					bought = true;
-					fromBank = true;
-				}
-				else if (accountGold > totalCost)
+				//cont = buyer.FindBankNoCreate();
+				//if ( cont != null && cont.ConsumeTotal( typeof( Gold ), totalCost ) )
+				if (accountGold > totalCost)
 				{
 					player.AccountGold -= totalCost;
-					//bought = true;
-					//fromBank = true;
-					SayTo( buyer, "I have withdrawn the gold from your Account Wallet");
+					bought = true;
+					fromBank = true;
 				}
 				else
 				{
