@@ -10,6 +10,8 @@ using Server.Engines.BulkOrders;
 using Server.Regions;
 using Server.Multis;
 using Server.Targeting;
+using Server.Mobiles;
+using Server.Accounting;
 
 namespace Server.Mobiles
 {
@@ -1625,6 +1627,8 @@ namespace Server.Mobiles
 			bool fullPurchase = true;
 			int controlSlots = buyer.FollowersMax - buyer.Followers;
 			bool tryGettingArty = false;
+			var player = buyer as PlayerMobile;
+			int accountGold = player.AccountGold;
 
 			foreach ( BuyItemResponse buy in list )
 			{
@@ -1709,7 +1713,6 @@ namespace Server.Mobiles
 				else if ( totalCost < 1 )
 					SayTo( buyer, 500192 );//Begging thy pardon, but thou casnt afford that.
 			}
-
 			if ( !bought && totalCost >= 1 )
 			{
 				cont = buyer.FindBankNoCreate();
@@ -1718,11 +1721,19 @@ namespace Server.Mobiles
 					bought = true;
 					fromBank = true;
 				}
+				else if (accountGold > totalCost)
+				{
+					player.AccountGold -= totalCost;
+					//bought = true;
+					//fromBank = true;
+					SayTo( buyer, "I have withdrawn the gold from your Account Wallet");
+				}
 				else
 				{
 					SayTo( buyer, 500191 ); //Begging thy pardon, but thy bank account lacks these funds.
 				}
 			}
+			
 
 			if ( !bought )
 				return false;
