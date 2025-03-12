@@ -1,3 +1,5 @@
+This project is no longer being worked on. I will leave it up for a while so people that might wanna copy can still download it.
+
 This is my fork of Secrets of Sosaria called Tribulations of Power.<br>
 I  have added the following things from Ultima Adventures<br>
 &nbsp;&nbsp; - The Combat Bar. It shows you a lot of usefull information.<br>
